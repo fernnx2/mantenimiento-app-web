@@ -1,0 +1,49 @@
+:host {
+    text-align: center;
+    
+    
+  }
+
+  nz-header,
+  nz-footer {
+    background: #f6f7f8;
+    color: rgb(12, 12, 12);
+  }
+
+  nz-footer {
+    line-height: 1.5;
+  }
+
+  nz-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(247, 249, 250);
+    color: rgb(14, 13, 13);
+    min-height: 120px;
+    line-height: 120px;
+  }
+
+  nz-layout {
+    margin-bottom: 48px;
+  }
+
+  nz-layout:last-child {
+    margin: 0;
+  }
+
+  .login-form {
+    max-width: 300px;
+  }
+
+  .login-form-margin {
+    margin-bottom: 16px;
+  }
+
+  .login-form-forgot {
+    float: right;
+  }
+
+  .login-form-button {
+    width: 100%;
+  }
