@@ -9,9 +9,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import {NzCheckboxModule} from 'ng-zorro-antd/checkbox';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { RegisterComponent } from './register/register.component';
+import { AuthService } from 'src/app/services/authService/authService.service';
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,
@@ -24,7 +26,11 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     NzIconModule
   ],
   exports:[
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
+  ],
+  providers:[
+    AuthService
   ]
 })
 export class AuthModule { }
