@@ -15,20 +15,20 @@
       <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/welcome">Welcome</a>
+            <a routerLink="/welcome">Inicio</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a>Register</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>Logout</a>
+            <a>Inventario</a>
           </li>
         </ul>
       </li>
-      <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
+      <li nz-submenu nzOpen nzTitle="Usuarios" nzIcon="user">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a>Basic Form</a>
+            <a nzIcon="plus" routerLink="/auth/register" >Nuevo Usuario</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/auth/logout">Cerrar Session</a>
           </li>
         </ul>
       </li>

@@ -10,8 +10,9 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import {NzCheckboxModule} from 'ng-zorro-antd/checkbox';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { RegisterComponent } from './register/register.component';
-import { AuthService } from 'src/app/services/authService/authService.service';
-
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
   imports: [
@@ -23,14 +24,17 @@ import { AuthService } from 'src/app/services/authService/authService.service';
     ReactiveFormsModule,
     NzInputModule,
     NzCheckboxModule,
-    NzIconModule
+    NzIconModule,
+    NzSelectModule,
+    NzMessageModule,
+    NzPageHeaderModule 
   ],
   exports:[
     LoginComponent,
     RegisterComponent
   ],
   providers:[
-    AuthService
+  
   ]
 })
 export class AuthModule { }

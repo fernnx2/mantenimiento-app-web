@@ -34,7 +34,8 @@ export class LoginComponent implements OnInit {
     this.authService.login({
       email: this.validateForm.get('email').value,
       password: this.validateForm.get('password').value
-    }).subscribe(resp => {
+    }).subscribe((resp: any) => {
+      sessionStorage.setItem('token', resp.token);
       console.log(resp, 'Usuario Logueado');
     }, err => {
       console.log(err, 'Usuario no encontrado 404');
