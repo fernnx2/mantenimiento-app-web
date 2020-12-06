@@ -1,0 +1,75 @@
+<nz-page-header class="site-page-header" nzTitle="" nzSubtitle="Completar todos los campos"></nz-page-header>
+   <form *ngIf="stateForm" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(validateForm.value)">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>Codigo</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+        <input nz-input formControlName="codigo" placeholder="codigo" type="text" />
+        <ng-template #emailErrorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            El codigo es requerido!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="rol" nzRequired>Tipo Equipo</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Seleccionar el tipo equipo!">
+          <nz-select nz-input type="tipo" formControlName="tipo" id="idTipo">
+              <nz-option nzValue="pc" nzLabel="PC"></nz-option>
+              <nz-option nzValue="impresora" nzLabel="Impresora"></nz-option>
+              <nz-option nzValue="laptop" nzLabel="Laptop"></nz-option>
+            </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="rol" nzRequired>Lugar</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Seleccionar el Lugar!">
+          <nz-select (nzOpenChange)="changeLugar(validateForm.get('lugar').value)" nz-input type="lugar" formControlName="lugar" id="idLugar">
+              <nz-option *ngFor="let lugar of listLugares" nzValue="{{lugar.id}}" nzLabel="{{lugar.nombre}}"></nz-option>
+            </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="rol" nzRequired>Departamento</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Seleccionar el Deaprtamento!">
+          <nz-select (nzOpenChange)="changeDepartamento(validateForm.get('departamento').value)" nz-input type="departamento" formControlName="departamento" id="idDepartamento">
+            <nz-option *ngFor="let dep of cmbDepartamentos" nzValue="{{dep.id}}" nzLabel="{{dep.nombre}}"></nz-option>
+            </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="rol" nzRequired>Area</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Seleccionar el Area!">
+          <nz-select nz-input type="area" formControlName="area" id="idArea">
+            <nz-option *ngFor="let area of cmbAreas" nzValue="{{area.id}}" nzLabel="{{area.nombre}}"></nz-option>
+            </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Condicion general</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="Ingrese la condicion del equipo!">
+          <textarea formControlName="condicionGeneral" nz-input rows="2" placeholder="condicion general"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" >Descripcion</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="!">
+        <textarea formControlName="descripcion" nz-input rows="2" placeholder="descripcion"></textarea>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSpan]="7" >Asignar Mantenimiento</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+          <input nz-checkbox-group formControlName="mantenimiento" type="checkbox" />
+          <ng-template #emailErrorTpl let-control>
+           !
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+    <nz-form-item>
+      <nz-form-control [nzOffset]="7" [nzSpan]="12">
+        <button nz-button nzType="primary" [disabled]="!validateForm.valid">Agregar Equipo</button>
+        <button nz-button (click)="resetForm($event)">Reset</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>

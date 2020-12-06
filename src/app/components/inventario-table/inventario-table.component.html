@@ -1,0 +1,21 @@
+
+<nz-page-header class="site-page-header" nzTitle="Invetario de equipos" nzSubtitle=""></nz-page-header>
+<nz-table #sortTable nzShowPagination nzShowSizeChanger [nzData]="listOfData" nzTableLayout="fixed">
+  <thead>
+    <tr>
+      <th *ngFor="let column of listOfColumn"  [nzSortFn]="column.sortFn" >{{ column.title }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of sortTable.data">
+      <td>{{ data.codigo }}</td>
+      <td>{{ data.tipo }}</td>
+      <td>{{ data.ubicacion.lugar }}, {{data.ubicacion.departamento}}, {{data.ubicacion.area}}</td>
+      <td>{{ data.condicionGeneral }}</td>
+      <td>{{ data.mantenimiento }}</td>
+      <td>
+        <a nz-button nzType="secondary" (click)="crearFichaTecnica(data.id, data.tipo)">Ficha Tecnica</a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

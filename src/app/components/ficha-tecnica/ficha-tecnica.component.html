@@ -1,0 +1,225 @@
+   <form *ngIf="stateForm" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(validateForm.value)">
+    <nz-form-item>
+      <nz-form-label [nzLg]="5" [nzXs]="24" nzRequired>Codigo Ficha Tecnica</nz-form-label>
+      <nz-form-control [nzLg]="5" [nzXs]="24" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+        <input nz-input formControlName="codigoFichaTecnica" placeholder="codigo ficha tecnica" type="text" />
+        <ng-template #emailErrorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            El codigo es requerido!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+      <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol" nzRequired>Fecha Elaboracion</nz-form-label>
+        <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese la fecha de elaboracion!">
+          <nz-date-picker formControlName="fechaElaboracion" ></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol" nzRequired>Nombre Responsable</nz-form-label>
+        <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese el nombre del responsable!">
+          <input nz-input formControlName="nombreResponsable" placeholder="nombre del responsable" type="text" />
+        </nz-form-control>
+        <nz-form-label [nzLg]="5" >Descripcion</nz-form-label>
+        <nz-form-control [nzLg]="5" nzErrorTip="!">
+          <textarea formControlName="descripcionEquipo" nz-input rows="2" placeholder="descripcion"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol" >Modelo</nz-form-label>
+        <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese el modelo!">
+          <input nz-input formControlName="modeloEquipo" placeholder="modelo" type="text" />
+        </nz-form-control>
+        <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol" >No Serie</nz-form-label>
+        <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese el numero de serie!">
+          <input nz-input formControlName="numeroSerieEquipo" placeholder="numero de serie" type="text" />
+        </nz-form-control>
+      </nz-form-item>
+
+
+
+      <nz-form-item>
+        <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol" nzRequired>Año Frabricacion</nz-form-label>
+        <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese el año de fabricacion!">
+          <input nz-input formControlName="anioFabricacion" placeholder="Año de frabricacion" type="number" />
+        </nz-form-control>
+        <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol" nzRequired>Nombre Fabricante</nz-form-label>
+        <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese el nombre del fabricante!">
+          <input nz-input formControlName="nombreFabricante" placeholder="nombre fabricante" type="text" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol">Telefono Fabricante</nz-form-label>
+        <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese el telefono!">
+          <input nz-input formControlName="telefonoFabricante" placeholder="telefono" type="number" />
+        </nz-form-control>
+        <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol" nzRequired>Nombre Proveedor</nz-form-label>
+        <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese el nombre del proveedor!">
+          <input nz-input formControlName="nombreProveedor" placeholder="nombre proveedor" type="text" />
+        </nz-form-control>
+      </nz-form-item>
+
+
+      <nz-form-item>
+        <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol" >Telefono Proveedor</nz-form-label>
+        <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese el telefono!">
+          <input nz-input formControlName="telefonoProveedor" placeholder="telefono" type="number" />
+        </nz-form-control>
+        <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol" nzRequired>Nombre Proveedor Repuestos</nz-form-label>
+        <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese el nombre del proveedor repuestos!">
+          <input nz-input formControlName="nombresProveedoresRepuestos" placeholder="nombre proveedor repuestos" type="text" />
+        </nz-form-control>
+      </nz-form-item>
+
+
+      <nz-form-item>
+        <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol" nzRequired>Fecha Compra</nz-form-label>
+        <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese la fecha de compra!">
+          <nz-date-picker formControlName="fechaCompra" ></nz-date-picker>
+        </nz-form-control>
+        <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol" nzRequired>Fecha Instalacion</nz-form-label>
+        <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese la fecha de instalacion!">
+          <nz-date-picker formControlName="fechaInstalacion" ></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol" nzRequired>Costo Adquisicion</nz-form-label>
+        <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese el costo!">
+          <input nz-input formControlName="costoAdquisicion" placeholder="costo" type="number" />
+        </nz-form-control>
+        <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol" >Costo de Reemplazo</nz-form-label>
+        <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese el costo de reemplazo!">
+          <input nz-input formControlName="costoReemplazo" placeholder="costo" type="number" />
+        </nz-form-control>
+      </nz-form-item>
+
+
+      <nz-form-item>
+        <nz-form-label [nzLg]="5" nzRequired>Garantia</nz-form-label>
+        <nz-form-control [nzLg]="5" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+          <input nz-checkbox-group formControlName="garantia" type="checkbox" />
+          <ng-template #emailErrorTpl let-control>
+           !
+          </ng-template>
+        </nz-form-control>
+        <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol" >Vencimiento Garantia</nz-form-label>
+        <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese la fecha de vencimiento!">
+          <nz-date-picker formControlName="vencimientoGarantia" ></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5" nzRequired>Contrato Mantenimiento</nz-form-label>
+        <nz-form-control [nzSpan]="5" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+          <input nz-checkbox-group formControlName="contratoMantenimiento" type="checkbox" />
+          <ng-template #emailErrorTpl let-control>
+           !
+          </ng-template>
+        </nz-form-control>
+        <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="rol" >Vencimiento Contrato</nz-form-label>
+        <nz-form-control [nzSm]="5" [nzXs]="24" nzErrorTip="Ingrese la fecha del vencimiento!">
+          <nz-date-picker formControlName="vencimientoContratoMantenimiento" ></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol" >Vida Util</nz-form-label>
+        <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese la viada util esperada!">
+          <input nz-input formControlName="vidaUtilEsperada" placeholder="vida util" type="number" />
+        </nz-form-control>
+        <nz-form-label [nzLg]="5" nzRequired>Incluye Manuales</nz-form-label>
+        <nz-form-control [nzLg]="5" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+          <input nz-checkbox-group formControlName="incluyeManuales" type="checkbox" />
+          <ng-template #emailErrorTpl let-control>
+           !
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+
+
+      <nz-form-item>
+        <nz-form-label [nzLg]="5" nzRequired>Incluye Planos</nz-form-label>
+        <nz-form-control [nzLg]="5" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+          <input nz-checkbox-group formControlName="incluyePlanos" type="checkbox" />
+          <ng-template #emailErrorTpl let-control>
+           !
+          </ng-template>
+        </nz-form-control>
+        <nz-form-label [nzLg]="5" nzRequired>Incluye CD</nz-form-label>
+        <nz-form-control [nzLg]="5" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+          <input nz-checkbox-group formControlName="incluyeCD" type="checkbox" />
+          <ng-template #emailErrorTpl let-control>
+           !
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol" >Voltage</nz-form-label>
+        <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese el voltage!">
+          <input nz-input formControlName="voltage" placeholder="voltage" type="number" />
+        </nz-form-control>
+        <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol" >Amperaje</nz-form-label>
+        <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese el amperaje!">
+          <input nz-input formControlName="amperaje" placeholder="amperaje" type="number" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol" >Cantidad de Fases</nz-form-label>
+        <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese la cantidad de fases!">
+          <input nz-input formControlName="cantidadFases" placeholder="fases" type="number" />
+        </nz-form-control>
+        <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol" >Peso Kg</nz-form-label>
+        <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese el peso!">
+          <input nz-input formControlName="pesoKg" placeholder="peso" type="number" />
+        </nz-form-control>
+      </nz-form-item>
+
+
+      <nz-form-item>
+        <nz-form-label [nzLg]="3" [nzXs]="24" nzFor="rol">Largo</nz-form-label>
+        <nz-form-control [nzLg]="3" [nzXs]="24" nzErrorTip="Ingrese el largo!">
+          <input nz-input formControlName="largo" placeholder="largo" type="number" />
+        </nz-form-control>
+        <nz-form-label [nzLg]="3" [nzXs]="24" nzFor="rol">Ancho</nz-form-label>
+        <nz-form-control [nzLg]="3" [nzXs]="24" nzErrorTip="Ingrese el ancho!">
+          <input nz-input formControlName="ancho" placeholder="ancho" type="number" />
+        </nz-form-control>
+        <nz-form-label [nzLg]="3" [nzXs]="24" nzFor="rol">Alto</nz-form-label>
+        <nz-form-control [nzLg]="3" [nzXs]="24" nzErrorTip="Ingrese el alto!">
+          <input nz-input formControlName="alto" placeholder="alto" type="number" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzLg]="5" nzRequired>Incluye Herramientas</nz-form-label>
+        <nz-form-control [nzLg]="5" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+          <input nz-checkbox-group formControlName="incluyeHerramientas" type="checkbox" />
+          <ng-template #emailErrorTpl let-control>
+           !
+          </ng-template>
+        </nz-form-control>
+        <nz-form-label [nzLg]="5" >Descripcion Herramientas</nz-form-label>
+        <nz-form-control [nzLg]="5" nzErrorTip="Ingrese la descripcion!">
+          <textarea formControlName="descripcionHerramientas" nz-input rows="2" placeholder="descripcion"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" >Observaciones</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzErrorTip="!">
+        <textarea formControlName="observaciones" nz-input rows="2" placeholder="observaciones"></textarea>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control [nzOffset]="7" [nzSpan]="6">
+        <button nz-button nzType="primary" [nzSize]="'large'" [disabled]="!validateForm.valid">Guardar</button>
+      </nz-form-control>
+      <a nz-button nzType="secondary" nzDanger [nzSize]="'large'" (click)="destroyModal()">Cerrar</a>
+    </nz-form-item>
+  </form>
+

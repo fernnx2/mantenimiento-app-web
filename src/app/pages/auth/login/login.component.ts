@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/authService/authService.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AuthService } from 'src/app/services/authService/authService.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(private fb: FormBuilder, private authService: AuthService, private route: Router) {}
 
   validateForm!: FormGroup;
 
@@ -36,6 +37,7 @@ export class LoginComponent implements OnInit {
       password: this.validateForm.get('password').value
     }).subscribe((resp: any) => {
       sessionStorage.setItem('token', resp.token);
+      this.route.navigate(['welcome']);
       console.log(resp, 'Usuario Logueado');
     }, err => {
       console.log(err, 'Usuario no encontrado 404');

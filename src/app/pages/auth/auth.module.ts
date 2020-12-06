@@ -13,8 +13,9 @@ import { RegisterComponent } from './register/register.component';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { LogoutComponent } from './logout/logout.component';
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent],
+  declarations: [LoginComponent, RegisterComponent, LogoutComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,

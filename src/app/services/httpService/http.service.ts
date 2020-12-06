@@ -18,4 +18,8 @@ export class HttpService {
     post(path: string, data: any, options: object){
         return this.httpService.post(this.apiUrl + path, data, options);
     }
-} 
+
+    update(path: string, data: any, options: object){
+      return this.httpService.put(this.apiUrl + path, data, options);
+    }
+}
