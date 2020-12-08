@@ -1,0 +1,174 @@
+<div nz-row>
+  <div nz-col [nzXs]="{ span: 18, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }">
+
+  </div>
+  <div nz-col [nzXs]="{ span: 18, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }">
+
+  </div>
+  <div nz-col [nzXs]="{ span: 18, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }">
+    <button nz-button [nzType]="'primary'" (click)="createComponentModal()"><span>Calendarizar Mantenimiento</span></button>
+  </div>
+</div>
+<nz-calendar>
+  <ul *nzDateCell="let date" class="events">
+    <ng-container [ngSwitch]="date.getDate()">
+      <ng-container *ngSwitchCase="1">
+        <li *ngFor="let item of listDataMap.uno">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="2">
+        <li *ngFor="let item of listDataMap.dos">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="3">
+        <li *ngFor="let item of listDataMap.tres">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="4">
+        <li *ngFor="let item of listDataMap.cuatro">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="5">
+        <li *ngFor="let item of listDataMap.cinco">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="6">
+        <li *ngFor="let item of listDataMap.seis">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="7">
+        <li *ngFor="let item of listDataMap.siete">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="8">
+        <li *ngFor="let item of listDataMap.ocho">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="9">
+        <li *ngFor="let item of listDataMap.nueve">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="10">
+        <li *ngFor="let item of listDataMap.diez">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="11">
+        <li *ngFor="let item of listDataMap.once">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="12">
+        <li *ngFor="let item of listDataMap.doce">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="13">
+        <li *ngFor="let item of listDataMap.trece">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="14">
+        <li *ngFor="let item of listDataMap.catorce">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="15">
+        <li *ngFor="let item of listDataMap.quince">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="16">
+        <li *ngFor="let item of listDataMap.dieciseis">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="17">
+        <li *ngFor="let item of listDataMap.diecisiete">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="18">
+        <li *ngFor="let item of listDataMap.dieciocho">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="19">
+        <li *ngFor="let item of listDataMap.diecinueve">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="20">
+        <li *ngFor="let item of listDataMap.veinte">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="21">
+        <li *ngFor="let item of listDataMap.veintiuno">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="22">
+        <li *ngFor="let item of listDataMap.veintidos">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="23">
+        <li *ngFor="let item of listDataMap.veintitres">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="24">
+        <li *ngFor="let item of listDataMap.veinticuatro">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="25">
+        <li *ngFor="let item of listDataMap.veinticinco">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="26">
+        <li *ngFor="let item of listDataMap.veintiseis">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="27">
+        <li *ngFor="let item of listDataMap.veintisiete">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="28">
+        <li *ngFor="let item of listDataMap.veintiocho">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="29">
+        <li *ngFor="let item of listDataMap.veintinueve">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+      <ng-container *ngSwitchCase="30">
+        <li *ngFor="let item of listDataMap.treinta">
+          <nz-badge [nzStatus]="item.type" [nzText]="item.content"></nz-badge>
+        </li>
+      </ng-container>
+
+    </ng-container>
+  </ul>
+  <ng-container *nzMonthCell="let month">
+    <div *ngIf="getMonthData(month) as monthData" class="notes-month">
+      <section>{{ monthData }}</section>
+      <span>Backlog number</span>
+    </div>
+  </ng-container>
+</nz-calendar>

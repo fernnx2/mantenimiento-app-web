@@ -1,0 +1,95 @@
+<form *ngIf="stateForm" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(validateForm.value)">
+  <nz-form-item>
+    <nz-form-label [nzLg]="5" [nzXs]="24" nzRequired>Codigo Pem</nz-form-label>
+    <nz-form-control [nzLg]="5" [nzXs]="24" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+      <input nz-input formControlName="codigoPem" placeholder="codigo pem" type="text" />
+      <ng-template #emailErrorTpl let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          El codigo es requerido!
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+    <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="rol" nzRequired>Tipo Equipo</nz-form-label>
+    <nz-form-control [nzSm]="5" [nzXs]="24" nzErrorTip="Seleccionar el tipo equipo!">
+      <nz-select nz-input type="tipo" formControlName="tipoEquipo" id="idTipoEquipo">
+          <nz-option nzValue="pc" nzLabel="PC"></nz-option>
+          <nz-option nzValue="impresora" nzLabel="Impresora"></nz-option>
+          <nz-option nzValue="laptop" nzLabel="Laptop"></nz-option>
+        </nz-select>
+    </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzLg]="5" [nzXs]="24" nzRequired>Nombre Pem</nz-form-label>
+      <nz-form-control [nzLg]="5" [nzXs]="24" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+        <input nz-input formControlName="nombrePem" placeholder="nombre pem" type="text" />
+        <ng-template #emailErrorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            El nombre es requerido!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+      <nz-form-label [nzLg]="5" >Descripcion de Pem</nz-form-label>
+      <nz-form-control [nzLg]="5" nzErrorTip="Ingrese la descripcion del pem!">
+        <textarea formControlName="descripcionPem" nz-input rows="2" placeholder="objetivo del procedimiento"></textarea>
+      </nz-form-control>
+      </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzLg]="5" >Objetivo Procedimiento</nz-form-label>
+      <nz-form-control [nzLg]="5" nzErrorTip="Ingrese el objetivo del procedimiento!">
+        <textarea formControlName="objetivoProcedimiento" nz-input rows="2" placeholder="objetivo del procedimiento"></textarea>
+      </nz-form-control>
+      <nz-form-label [nzLg]="5" >Descripcion Procedimiento</nz-form-label>
+      <nz-form-control [nzLg]="5" nzErrorTip="Ingrese la descripcion!">
+        <textarea formControlName="descripcionProcedimiento" nz-input rows="2" placeholder="descripcion del procedimiento"></textarea>
+      </nz-form-control>
+    </nz-form-item>
+
+
+    <nz-form-item>
+      <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol" nzRequired>Nombre Responsable</nz-form-label>
+      <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese el nombre del responsable!">
+        <input nz-input formControlName="nombreCreador" placeholder="nombre del responsable" type="text" />
+      </nz-form-control>
+      <nz-form-label [nzLg]="5" [nzXs]="24" nzFor="rol" >Fecuencia (meses)</nz-form-label>
+      <nz-form-control [nzLg]="5" [nzXs]="24" nzErrorTip="Ingrese el modelo!">
+        <input nz-input formControlName="frecuenciaEnMeses" placeholder="frecuencia" type="number" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="5" [nzXs]="24" nzFor="rol" nzRequired>Tipo Pem</nz-form-label>
+      <nz-form-control [nzSm]="5" [nzXs]="24" nzErrorTip="Seleccionar el tipo equipo!">
+        <nz-select nz-input type="tipo" formControlName="tipoPem" id="idTipoEquipo">
+            <nz-option *ngFor="let tipo of listTipoPem" nzValue="{{tipo.codigoTipoProcedimiento}}" nzLabel="{{tipo.codigoTipoProcedimiento}}"></nz-option>
+          </nz-select>
+      </nz-form-control>
+      <nz-form-label [nzLg]="5" >Tareas</nz-form-label>
+      <nz-form-control [nzLg]="5" nzErrorTip="Ingrese la descripcion!">
+        <textarea formControlName="tareasPem" nz-input rows="2" placeholder="Lista de Tareas"></textarea>
+      </nz-form-control>
+    </nz-form-item>
+
+
+
+    <nz-form-item>
+      <nz-form-label [nzLg]="5" >Mano de Obra</nz-form-label>
+      <nz-form-control [nzLg]="5" nzErrorTip="Ingrese la descripcion!">
+        <textarea formControlName="manoObra" nz-input rows="2" placeholder="Descripcion de mano de obra"></textarea>
+      </nz-form-control>
+      <nz-form-label [nzLg]="5" >Repuestos y Materiales</nz-form-label>
+      <nz-form-control [nzLg]="5" nzErrorTip="Ingrese la descripcion!">
+        <textarea formControlName="repuestosMateriales" nz-input rows="2" placeholder="Repuestos y materiales"></textarea>
+      </nz-form-control>
+    </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control [nzOffset]="7" [nzSpan]="6">
+      <button nz-button nzType="primary" [nzSize]="'large'" [disabled]="!validateForm.valid">Guardar</button>
+    </nz-form-control>
+    <a nz-button nzType="secondary" nzDanger [nzSize]="'large'" (click)="destroyModal()">Cerrar</a>
+  </nz-form-item>
+</form>
+
+

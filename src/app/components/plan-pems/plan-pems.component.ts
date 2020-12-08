@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalRef } from 'ng-zorro-antd/modal';
 import { concatMap } from 'rxjs/operators';
 import { InventarioEquipo } from 'src/app/models/InventarioEquipo';
 import { PlanPems } from 'src/app/models/PlanPems';
@@ -19,14 +20,14 @@ export class PlanPemsComponent implements OnInit {
   stateForm: boolean = false;
   listEquipos: InventarioEquipo[];
   listTipoPem: TipoPems[];
+  listPems: [];
 
   constructor(private fb: FormBuilder, private equipoService: EquipoService, private mantto: MantenimientoService, private message: NzMessageService) {
     this.validateForm = this.fb.group({
       codigoEquipo: ['',[Validators.required]],
-      nombreProcedimiento: ['', [Validators.required]],
-      objetivoProcedimiento: ['',[Validators.required]],
       frecuenciaProcedimiento: ['', [Validators.required]],
-      tipoPem: ['', []]
+      codigoPem: ['', [Validators.required]],
+      fechaInicio: ['', [Validators.required]]
     });
    }
 

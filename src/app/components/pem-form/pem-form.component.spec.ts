@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PemsTableComponent } from './pems-table.component';
+import { PemFormComponent } from './pem-form.component';
 
-describe('PemsTableComponent', () => {
-  let component: PemsTableComponent;
-  let fixture: ComponentFixture<PemsTableComponent>;
+describe('PemFormComponent', () => {
+  let component: PemFormComponent;
+  let fixture: ComponentFixture<PemFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PemsTableComponent ]
+      declarations: [ PemFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PemsTableComponent);
+    fixture = TestBed.createComponent(PemFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

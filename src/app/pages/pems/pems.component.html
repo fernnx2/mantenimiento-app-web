@@ -1,1 +1,30 @@
-<app-plan-pems></app-plan-pems>
+<div nz-row>
+  <div nz-col [nzXs]="{ span: 18, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }">
+
+  </div>
+  <div nz-col [nzXs]="{ span: 18, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }">
+
+  </div>
+  <div nz-col [nzXs]="{ span: 18, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }">
+    <button nz-button [nzType]="'primary'" (click)="createComponentModal()"><span>Registrar PEM</span></button>
+  </div>
+</div>
+<nz-page-header class="site-page-header" nzTitle="Procedimiento Estandar de Mantenimiento" nzSubtitle=""></nz-page-header>
+<nz-table #sortTable nzShowPagination nzShowSizeChanger [nzData]="listOfData" nzTableLayout="fixed">
+  <thead>
+    <tr>
+      <th *ngFor="let column of listOfColumn"  [nzSortFn]="column.sortFn" >{{ column.title }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of sortTable.data">
+      <td>{{ data.codigoPem }}</td>
+      <td>{{ data.tipoEquipo }}</td>
+      <td>{{ data.tipoPem.codigoTipoProcedimiento }}</td>
+      <td>{{ data.nombrePem }}</td>
+      <td>
+        <a nz-button nzType="secondary" >Ver</a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
