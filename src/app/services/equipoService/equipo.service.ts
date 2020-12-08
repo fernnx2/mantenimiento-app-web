@@ -33,9 +33,6 @@ export class EquipoService {
     }
 
 
-
-
-
     getLugares(){
         return this.httpService.get('lugares',{});
     }

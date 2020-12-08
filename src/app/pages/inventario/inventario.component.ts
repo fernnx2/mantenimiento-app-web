@@ -13,6 +13,37 @@ export class InventarioComponent implements OnInit {
   listDataTable: InventarioEquipo[];
   isVisible = false;
 
+  listOfColumn = [
+    {
+      title: 'Codigo',
+      sortFn: (a: InventarioEquipo, b: InventarioEquipo) => a.codigo.localeCompare(b.codigo),
+      priority: 3
+    },
+    {
+      title: 'Tipo',
+      sortFn: (a: InventarioEquipo, b: InventarioEquipo) => a.tipo.localeCompare(b.tipo),
+      priority: 2
+    },
+    {
+      title: 'Ubicacion',
+      sortFn: (a: InventarioEquipo, b: InventarioEquipo) => a.ubicacion['lugar'].localeCompare(b.ubicacion['lugar']),
+      priority: 1
+    },
+    {
+      title: 'Condicion',
+      priority: 1
+    },
+    {
+      title: 'Mantenimiento',
+      sortFn: (a: InventarioEquipo, b: InventarioEquipo) => a.mantenimiento.valueOf() === false,
+      priority: 1
+    },
+    {
+      title: 'Accion'
+    }
+  ];
+
+
   constructor(private equipoService: EquipoService, private modal: NzModalService,private viewContainerRef: ViewContainerRef) { }
 
   ngOnInit(): void {

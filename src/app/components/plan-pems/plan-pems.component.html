@@ -1,0 +1,58 @@
+<form *ngIf="stateForm" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(validateForm.value)">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="rol" nzRequired>Equipo</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Seleccionar el Equipo!">
+      <nz-select nzShowSearch nzAllowClear  nz-input type="codigoEquipo" formControlName="codigoEquipo" id="idCodigoEquipo" nzPlaceHolder="Seleccionar el codigo del Equipo">
+          <nz-option *ngFor="let equipo of listEquipos" nzCustomContent nzValue="{{equipo.id}}" nzLabel="{{equipo.codigo}}">{{equipo.codigo}}</nz-option>
+        </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>Procedimiento</nz-form-label>
+    <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+      <input nz-input formControlName="nombreProcedimiento" placeholder="procedimiento" type="text" />
+      <ng-template #emailErrorTpl let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          El codigo es requerido!
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>Objetivo</nz-form-label>
+    <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+      <input nz-input formControlName="objetivoProcedimiento" placeholder="objetivo" type="text" />
+      <ng-template #emailErrorTpl let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          El codigo es requerido!
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="7" nzRequired>Frecuencia (meses)</nz-form-label>
+    <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+      <input nz-input formControlName="frecuenciaProcedimiento" placeholder="frecuencia" type="text" />
+      <ng-template #emailErrorTpl let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          El codigo es requerido!
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="rol" nzRequired>Tipo Pem</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Seleccionar el Area!">
+        <nz-select nzShowSearch nzAllowClear  nz-input type="tipoPem" formControlName="tipoPem" id="idTipoPem" nzPlaceHolder="Seleccionar el tipo de pems">
+          <nz-option *ngFor="let tipo of listTipoPem" nzCustomContent  nzLabel="{{tipo.codigoTipoProcedimiento}}" nzValue="{{tipo.id}}">{{tipo.codigoTipoProcedimiento}}</nz-option>
+        </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control [nzOffset]="7" [nzSpan]="12">
+      <button nz-button nzType="primary" [disabled]="!validateForm.valid">Agregar Equipo</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

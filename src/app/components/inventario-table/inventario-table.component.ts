@@ -11,37 +11,7 @@ import { FichaTecnicaComponent } from '../ficha-tecnica/ficha-tecnica.component'
 export class InventarioTableComponent implements OnInit {
 
   @Input() listOfData: InventarioEquipo[];
-
-  listOfColumn = [
-    {
-      title: 'Codigo',
-      sortFn: (a: InventarioEquipo, b: InventarioEquipo) => a.codigo.localeCompare(b.codigo),
-      priority: 3
-    },
-    {
-      title: 'Tipo',
-      sortFn: (a: InventarioEquipo, b: InventarioEquipo) => a.tipo.localeCompare(b.tipo),
-      priority: 2
-    },
-    {
-      title: 'Ubicacion',
-      sortFn: (a: InventarioEquipo, b: InventarioEquipo) => a.ubicacion['lugar'].localeCompare(b.ubicacion['lugar']),
-      priority: 1
-    },
-    {
-      title: 'Condicion',
-      priority: 1
-    },
-    {
-      title: 'Mantenimiento',
-      sortFn: (a: InventarioEquipo, b: InventarioEquipo) => a.mantenimiento.valueOf() === false,
-      priority: 1
-    },
-    {
-      title: 'Accion'
-    }
-  ];
-
+  @Input() listOfColumn: [];
 
   constructor(private modal: NzModalService,private viewContainerRef: ViewContainerRef) { }
 

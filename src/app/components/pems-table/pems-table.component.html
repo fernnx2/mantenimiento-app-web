@@ -1,0 +1,20 @@
+<nz-page-header class="site-page-header" nzTitle="Invetario de equipos" nzSubtitle=""></nz-page-header>
+<nz-table #sortTable nzShowPagination nzShowSizeChanger [nzData]="listOfData" nzTableLayout="fixed">
+  <thead>
+    <tr>
+      <th *ngFor="let column of listOfColumn"  [nzSortFn]="column.sortFn" >{{ column.title }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of sortTable.data">
+      <td>{{ data.codigoPem }}</td>
+      <td>{{ data.tipoEquipo }}</td>
+      <td>{{ data.nombrePem }}</td>
+      <td>{{ data.objetivoProcedimiento }}</td>
+      <td>{{ data.tipoPem.codigoTipoProcedimiento }}</td>
+      <td>
+        <a nz-button nzType="secondary" (click)="addPem()">Add Pem</a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

@@ -5,7 +5,8 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/welcome' },
   { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule) },
   { path: 'auth', loadChildren:() => import('./pages/auth/auth.module').then(a => a.AuthModule) },
-  { path: 'inventario', loadChildren:() => import('./pages/inventario/inventario.module').then(a => a.InventarioModule) }
+  { path: 'inventario', loadChildren:() => import('./pages/inventario/inventario.module').then(a => a.InventarioModule) },
+  { path: 'pems', loadChildren:() => import('./pages/pems/pems.module').then(p => p.PemsModule) }
 
 ];
 

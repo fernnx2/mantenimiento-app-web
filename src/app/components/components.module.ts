@@ -18,6 +18,10 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { FichaTecnicaComponent } from './ficha-tecnica/ficha-tecnica.component';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { TipoPemsComponent } from './tipo-pems/tipo-pems.component';
+import { PlanPemsComponent } from './plan-pems/plan-pems.component';
+import { MantenimientoService } from '../services/mantenimientoService/matenimientoService.service';
+import { PemsTableComponent } from './pems-table/pems-table.component';
 
 @NgModule({
   imports: [
@@ -37,12 +41,13 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
     NzModalModule,
     NzDatePickerModule
   ],
-  declarations: [InventarioEquipoComponent, InventarioTableComponent, FichaTecnicaComponent],
+  declarations: [InventarioEquipoComponent, InventarioTableComponent, FichaTecnicaComponent, TipoPemsComponent, PlanPemsComponent, PemsTableComponent],
   exports: [
-      InventarioEquipoComponent, InventarioTableComponent, FichaTecnicaComponent
+      InventarioEquipoComponent, InventarioTableComponent, FichaTecnicaComponent, TipoPemsComponent, PlanPemsComponent
   ],
   providers:[
-    EquipoService
+    EquipoService,
+    MantenimientoService
   ]
 })
 export class ComponentsModule { }
