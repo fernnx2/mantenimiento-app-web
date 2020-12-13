@@ -1,0 +1,41 @@
+<nz-page-header class="site-page-header" nzTitle="" nzSubtitle="Completar todos los campos"></nz-page-header>
+   <form *ngIf="stateForm" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(validateForm.value)">
+
+    <nz-form-item>
+      <nz-form-label [nzLg]="7" [nzXs]="24" nzFor="rol" nzRequired>Fecha de Inicio</nz-form-label>
+        <nz-form-control [nzLg]="12" [nzXs]="24" nzErrorTip="Ingrese la fecha de inicio de trabajo!">
+          <nz-date-picker formControlName="fechaARealizar" ></nz-date-picker>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzLg]="7" [nzXs]="24" nzFor="rol" nzRequired>Fecha de Final</nz-form-label>
+      <nz-form-control [nzLg]="12" [nzXs]="24" nzErrorTip="Ingrese la fecha de inicio de trabajo!">
+        <nz-date-picker formControlName="fechaDesarrolloTrabajo" ></nz-date-picker>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="7" [nzXs]="24" nzFor="rol" nzRequired>Persona Designada</nz-form-label>
+        <nz-form-control [nzSm]="12" [nzXs]="24" nzErrorTip="Seleccionar el Area!">
+          <nz-select nz-input type="personaDesignada" formControlName="personaDesignada" id="idPersonaDesignada">
+            <nz-option *ngFor="let usuario of usuarios" nzValue="{{usuario.id}}" nzLabel="{{usuario.username}}"></nz-option>
+          </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSm]="7" [nzXs]="24" nzFor="rol" nzRequired>Pem</nz-form-label>
+        <nz-form-control [nzSm]="12" [nzXs]="24" nzErrorTip="Seleccionar el Pem!">
+          <nz-select nz-input type="codigoPem" formControlName="codigoPem" id="idCodigoPem">
+            <nz-option *ngFor="let p of pem" nzValue="{{p.id}}" nzLabel="{{p.codigoPem}}"></nz-option>
+          </nz-select>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-control [nzOffset]="7" [nzSpan]="12">
+        <button nz-button nzType="primary" [disabled]="!validateForm.valid">Asignar</button>
+      </nz-form-control>
+      <a nz-button nzType="secondary" nzDanger [nzSize]="'large'" (click)="destroyModal()">Cerrar</a>
+    </nz-form-item>
+  </form>

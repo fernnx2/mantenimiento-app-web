@@ -4,6 +4,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { concatMap } from 'rxjs/operators';
 import { InventarioEquipo } from 'src/app/models/InventarioEquipo';
+import { Pem } from 'src/app/models/Pem';
 import { PlanPems } from 'src/app/models/PlanPems';
 import { TipoPems } from 'src/app/models/TipoPems';
 import { EquipoService } from 'src/app/services/equipoService/equipo.service';
@@ -20,13 +21,13 @@ export class PlanPemsComponent implements OnInit {
   stateForm: boolean = false;
   listEquipos: InventarioEquipo[];
   listTipoPem: TipoPems[];
-  listPems: [];
+  listPems: Pem[];
 
   constructor(private fb: FormBuilder, private equipoService: EquipoService, private mantto: MantenimientoService, private message: NzMessageService) {
     this.validateForm = this.fb.group({
       codigoEquipo: ['',[Validators.required]],
       frecuenciaProcedimiento: ['', [Validators.required]],
-      codigoPem: ['', [Validators.required]],
+      numeroPem: ['', [Validators.required]],
       fechaInicio: ['', [Validators.required]]
     });
    }
@@ -34,6 +35,7 @@ export class PlanPemsComponent implements OnInit {
   ngOnInit(): void {
     this.getEquipos();
     this.getTipoPems();
+    this.getPems();
   }
 
   getEquipos(){
@@ -55,6 +57,16 @@ export class PlanPemsComponent implements OnInit {
     })
   }
 
+  getPems(){
+    this.mantto.findAllPems().subscribe((pems: Pem[])=>{
+      this.listPems = pems;
+      this.stateForm = true;
+    },err=>{
+      this.stateForm = false;
+      console.log('Error la obtener los pems', err);
+    })
+  }
+
   submitForm(value){
     value.tipoPem = this.listTipoPem.find(tipo => tipo.id = value.tipoPem);
     let plan = new PlanPems();
@@ -68,6 +80,7 @@ export class PlanPemsComponent implements OnInit {
         console.log('All completed!');
       });
     }, error =>{
+      console.log(error);
       objMessage.onClose!.pipe(
         concatMap(() => this.message.error('Error al guardar!' + error, { nzDuration: 2000 }).onClose!),
       )

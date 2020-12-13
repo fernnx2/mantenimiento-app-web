@@ -9,18 +9,24 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { MantenimientoService } from 'src/app/services/mantenimientoService/matenimientoService.service';
 import { PemsRouting } from './pems-routing.module';
 import { PemsComponent } from './pems.component';
-
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 
 @NgModule({
   imports: [
     CommonModule,
-     PemsRouting,
-     ComponentsModule,
-     NzModalModule,
-     NzGridModule,
-     NzButtonModule,
-     NzPageHeaderModule,
-      NzTableModule,
+    PemsRouting,
+    ComponentsModule,
+    NzModalModule,
+    NzGridModule,
+    NzButtonModule,
+    NzPageHeaderModule,
+    NzTableModule,
+    NzDrawerModule,
+    NzDescriptionsModule,
+    NzDividerModule
+
     ],
   exports: [PemsComponent],
   declarations: [PemsComponent],

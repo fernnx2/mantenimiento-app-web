@@ -22,7 +22,12 @@ import { TipoPemsComponent } from './tipo-pems/tipo-pems.component';
 import { PlanPemsComponent } from './plan-pems/plan-pems.component';
 import { MantenimientoService } from '../services/mantenimientoService/matenimientoService.service';
 import { PemFormComponent } from './pem-form/pem-form.component';
-
+import { SolicitudOrdenTrabajoComponent } from './solicitud-orden-trabajo/solicitud-orden-trabajo.component';
+import { OrdenTrabajoComponent } from './orden-trabajo/orden-trabajo.component';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { NzListModule } from 'ng-zorro-antd/list';
+import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 @NgModule({
   imports: [
     CommonModule,
@@ -39,11 +44,15 @@ import { PemFormComponent } from './pem-form/pem-form.component';
     NzPageHeaderModule,
     NzTableModule,
     NzModalModule,
-    NzDatePickerModule
+    NzDatePickerModule,
+    NzDrawerModule,
+    NzListModule,
+    NzDescriptionsModule,
+    NzDividerModule
   ],
-  declarations: [InventarioEquipoComponent, InventarioTableComponent, FichaTecnicaComponent, TipoPemsComponent, PlanPemsComponent, PemFormComponent],
+  declarations: [InventarioEquipoComponent, InventarioTableComponent, FichaTecnicaComponent, TipoPemsComponent, PlanPemsComponent, PemFormComponent, SolicitudOrdenTrabajoComponent, OrdenTrabajoComponent],
   exports: [
-      InventarioEquipoComponent, InventarioTableComponent, FichaTecnicaComponent, TipoPemsComponent, PlanPemsComponent
+      InventarioEquipoComponent, InventarioTableComponent, FichaTecnicaComponent, TipoPemsComponent, PlanPemsComponent, SolicitudOrdenTrabajoComponent,
   ],
   providers:[
     EquipoService,

@@ -23,8 +23,37 @@
       <td>{{ data.tipoPem.codigoTipoProcedimiento }}</td>
       <td>{{ data.nombrePem }}</td>
       <td>
-        <a nz-button nzType="secondary" >Ver</a>
+        <a nz-button nzType="secondary" (click)="verPem(data.id)" >Ver</a>
       </td>
     </tr>
   </tbody>
 </nz-table>
+
+
+
+<nz-drawer [nzVisible]="visible" [nzWidth]="800" [nzClosable]="false" (nzOnClose)="close()">
+  <div *ngIf="visible">
+    <p class="title" style=" margin-bottom: 24px;">PROCEDIMIENTO ESTANDAR DE MANTENIMIENTO</p>
+    <nz-descriptions [nzColumn]="2" nzTitle="PEM">
+      <nz-descriptions-item nzTitle="CODIGO" [nzSpan]="1">{{viewPem.codigoPem}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="NOMBRE PEM" [nzSpan]="1">{{viewPem.nombrePem}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="OBJETIVO PROCEDIMIENTO" [nzSpan]="1">{{viewPem.objetivoProcedimiento}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="DESCRIPCION PROCEDIMIENTO" [nzSpan]="1">{{viewPem.descripcionProcedimiento}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="NOMBRE CREADOR" [nzSpan]="1">{{viewPem.nombreCreador}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="DESCRIPCION PEM" [nzSpan]="1">{{viewPem.descripcionPem}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="FRECUENCIA (MESES)" [nzSpan]="2">{{viewPem.frecuenciaEnMeses}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="TIPO EQUIPO" [nzSpan]="1">{{viewPem.tipoEquipo}}</nz-descriptions-item>
+    </nz-descriptions>
+    <nz-divider></nz-divider>
+    <nz-descriptions [nzColumn]="2" nzTitle="TIPO PEM">
+      <nz-descriptions-item nzTitle="TIPO PEM" [nzSpan]="1">{{viewPem.tipoPem['codigoTipoProcedimiento']}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="DESCRIPCION" [nzSpan]="1">{{viewPem.tipoPem['decripcionTipoProcedimiento']}}</nz-descriptions-item>
+    </nz-descriptions>
+    <nz-divider></nz-divider>
+    <nz-descriptions [nzColumn]="2" nzTitle="MANTENIMIENTO">
+      <nz-descriptions-item nzTitle="TAREAS" [nzSpan]="1">{{viewPem.tareasPem['tarea']}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="MANO DE OBRA" [nzSpan]="1">{{viewPem.manoObra['data']}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="RESPUESTOS, MATERIALES" [nzSpan]="1">{{viewPem.repuestosMateriales['data']}}</nz-descriptions-item>
+    </nz-descriptions>
+    </div>
+</nz-drawer>

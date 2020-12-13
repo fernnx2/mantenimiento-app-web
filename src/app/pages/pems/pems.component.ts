@@ -11,6 +11,8 @@ import { MantenimientoService } from 'src/app/services/mantenimientoService/mate
 })
 export class PemsComponent implements OnInit {
 
+  visible = false;
+  viewPem: Pem;
   listOfData: Pem[];
   listOfColumn = [
     {
@@ -35,6 +37,7 @@ export class PemsComponent implements OnInit {
       title: 'Accion'
     }
   ];
+
 
 
   constructor(private manttoService: MantenimientoService,private modal: NzModalService,private viewContainerRef: ViewContainerRef) { }
@@ -75,6 +78,15 @@ export class PemsComponent implements OnInit {
     });
   }
 
+  verPem(value){
+    this.viewPem = this.listOfData.find(p => p.id === value);
+    console.log(this.viewPem);
+    this.visible = true;
+  }
 
+  close(){
+    this.visible = false;
+  }
+  //
 
 }

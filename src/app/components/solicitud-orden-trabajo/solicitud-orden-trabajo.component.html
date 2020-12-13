@@ -1,0 +1,86 @@
+<nz-page-header class="site-page-header" nzTitle="" nzSubtitle="Completar todos los campos"></nz-page-header>
+   <form *ngIf="stateForm" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(validateForm.value)">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>Nombre del Solicitante</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+        <input nz-input formControlName="nombreSolicitante" placeholder="nombre" type="text" />
+        <ng-template #emailErrorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            El Nombre es requerido!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>Referencia</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+        <input nz-input formControlName="referenciaOrdenTrabajo" placeholder="referencia" type="text" />
+        <ng-template #emailErrorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            La referencia de la orden es requerida!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="7" [nzXs]="24" nzFor="rol" nzRequired>Equipo</nz-form-label>
+        <nz-form-control [nzSm]="12" [nzXs]="24" nzErrorTip="Seleccionar el Area!">
+          <nz-select nz-input type="codigoEquipo" formControlName="codigoEquipo" id="idCodigoEquipo">
+            <nz-option *ngFor="let equipo of listEquipos" nzValue="{{equipo.id}}" nzLabel="{{equipo.codigo}}"></nz-option>
+            </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" >Falla De Emergencia</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+          <input nz-checkbox-group formControlName="esFallaEmergencia" type="checkbox" />
+          <ng-template #emailErrorTpl let-control>
+           !
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" >Falla De Corectiva</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+          <input nz-checkbox-group formControlName="esFallaCorrectiva" type="checkbox" />
+          <ng-template #emailErrorTpl let-control>
+           !
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" >Causa Falla</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="!">
+          <textarea formControlName="causaFalla" nz-input rows="2" placeholder="causa de la falla"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" >Descripcion Falla</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="!">
+          <textarea formControlName="descripcionFalla" nz-input rows="2" placeholder="descripcion de la falla"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzLg]="7" [nzXs]="24" nzFor="rol" nzRequired>Fecha de Trabajo</nz-form-label>
+        <nz-form-control [nzLg]="12" [nzXs]="24" nzErrorTip="Ingrese la programada de trabajo!">
+          <nz-date-picker formControlName="fechaProgramacionTrabajo" ></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+
+
+
+    <nz-form-item>
+      <nz-form-control [nzOffset]="7" [nzSpan]="12">
+        <button nz-button nzType="primary" [disabled]="!validateForm.valid">Crear Solicitud</button>
+        <a nz-button (click)="resetForm($event)">Reset</a>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+

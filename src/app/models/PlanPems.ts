@@ -1,8 +1,8 @@
 export class PlanPems {
   public id: string;
   public codigoEquipo: string;
-  public nombreProcedimiento: string;
+  public frecuenciaProcedimiento: string;
   public fechaInicio: Date;
-  public numeroPem: object;
+  public numeroPem: string;
   public fechaCreacion: Date;
 }

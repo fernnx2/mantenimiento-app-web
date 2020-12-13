@@ -1,0 +1,55 @@
+
+<div nz-row>
+  <div nz-col [nzXs]="{ span: 18, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }">
+
+  </div>
+  <div nz-col [nzXs]="{ span: 18, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }">
+
+  </div>
+  <div nz-col [nzXs]="{ span: 18, offset: 1 }" [nzLg]="{ span: 6, offset: 2 }">
+    <button nz-button [nzType]="'primary'" (click)="createComponentModal()"><span>Crear Solicitud</span></button>
+  </div>
+</div>
+<nz-page-header class="site-page-header" nzTitle="Solicitudes De Mantenimiento" nzSubtitle=""></nz-page-header>
+<nz-table #sortTable nzShowPagination nzShowSizeChanger [nzData]="listOfData" nzTableLayout="fixed">
+  <thead>
+    <tr>
+      <th *ngFor="let column of listOfColumn"  [nzSortFn]="column.sortFn" >{{ column.title }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of sortTable.data">
+      <td>{{ data.nombreSolicitante }}</td>
+      <td>{{ data.esFallaEmergencia | prioridad}}</td>
+      <td>{{ data.fechaHoraSolicitud }}</td>
+      <td><nz-badge nzStatus="{{data.estatus| estado}}" nzText="{{data.estatus}}"></nz-badge></td>
+      <td>
+        <a *ngIf="data.estatus === 'pendiente'" nz-button nzType="secondary" (click)="ordenTrabajo(data.id)">Orden de Trabajo</a>
+        <a *ngIf="data.estatus === 'aceptada'" nz-button nzType="secondary" (click)="openView(data.id)">Ver</a>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+
+
+<nz-drawer [nzVisible]="visible" [nzWidth]="800" [nzClosable]="false" (nzOnClose)="close()">
+  <div *ngIf="visible">
+    <p class="title" style=" margin-bottom: 24px;">PROCEDIMIENTO ESTANDAR DE MANTENIMIENTO</p>
+    <nz-descriptions [nzColumn]="2" nzTitle="PEM">
+      <nz-descriptions-item nzTitle="PERSONA DESIGNADA" [nzSpan]="1">{{viewManto.user.username}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="FECHA A REALIZAR" [nzSpan]="1">{{viewManto.orden.fechaARealizar}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="FECHA DE FINALIZACION" [nzSpan]="1">{{viewManto.orden.fechaDesarrolloTrabajo}}</nz-descriptions-item>
+
+    </nz-descriptions>
+    <nz-divider></nz-divider>
+    <nz-descriptions [nzColumn]="2" nzTitle="TIPO PEM">
+      <nz-descriptions-item nzTitle="TIPO PEM" [nzSpan]="1">{{viewManto.solicitud.causaFalla}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="FALLA" [nzSpan]="1">{{viewManto.solicitud.descripcionFalla}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="PRIORIDAD" [nzSpan]="1">{{viewManto.solicitud.esFallaEmergencia | prioridad}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="ESTATUS" [nzSpan]="1">{{viewManto.solicitud.estatus}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="SOLICITANTE" [nzSpan]="1">{{viewManto.solicitud.nombreSolicitante}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="REFERENCIA" [nzSpan]="1">{{viewManto.solicitud.referenciaOrdenTrabajo}}</nz-descriptions-item>
+    </nz-descriptions>
+    <nz-divider></nz-divider>
+    </div>
+</nz-drawer>

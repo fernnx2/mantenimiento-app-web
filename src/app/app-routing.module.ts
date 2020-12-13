@@ -7,7 +7,8 @@ const routes: Routes = [
   { path: 'auth', loadChildren:() => import('./pages/auth/auth.module').then(a => a.AuthModule) },
   { path: 'inventario', loadChildren:() => import('./pages/inventario/inventario.module').then(a => a.InventarioModule) },
   { path: 'pems', loadChildren:() => import('./pages/pems/pems.module').then(p => p.PemsModule) },
-  { path: 'calendar', loadChildren:() => import('./pages/calendar/calendar.module').then(c => c.CalendarModule) }
+  { path: 'calendar', loadChildren:() => import('./pages/calendar/calendar.module').then(c => c.CalendarModule) },
+  { path: 'solicitud-mantenimiento', loadChildren:() => import('./pages/solicitud-mantenimiento/solicitud-mantenimiento.module').then(s => s.SolicitudMantenimientoModule)}
 
 ];
 

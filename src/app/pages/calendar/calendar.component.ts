@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { PlanPemsComponent } from 'src/app/components/plan-pems/plan-pems.component';
+import { CalendarioAuxiliar } from 'src/app/models/CalendarioAuxiliar';
+import { PlanPems } from 'src/app/models/PlanPems';
+import { MantenimientoService } from 'src/app/services/mantenimientoService/matenimientoService.service';
 
 @Component({
   selector: 'app-calendar',
@@ -9,13 +12,27 @@ import { PlanPemsComponent } from 'src/app/components/plan-pems/plan-pems.compon
 })
 export class CalendarComponent implements OnInit {
 
-  constructor(private modal: NzModalService,private viewContainerRef: ViewContainerRef) { }
+  listPlansPems: PlanPems[];
+  listCalendarioAuxiliar: CalendarioAuxiliar[];
+  warnCalendar =  { type: 'warning', content: '' };
+  successCalendar =  { type: 'success', content: '' };
+  errorCalendar =  { type: 'error', content: '' };
+
+  constructor(private manttoService: MantenimientoService,private modal: NzModalService,private viewContainerRef: ViewContainerRef) { }
 
   ngOnInit(): void {
+    this.getPlanPems();
+  }
+
+  getDayforDate(date){
+    let day = new Date(date);
+    return day.getDay();
   }
 
   listDataMap = {
-    uno:[],
+    uno:[
+      'Que'
+    ],
     dos:[],
     tres:[],
     cuatro:[],
@@ -44,12 +61,46 @@ export class CalendarComponent implements OnInit {
     veintisiete:[],
     veintiocho:[],
     veintinueve:[],
-    treinta:[
-      { type: 'warning', content: 'This is warning event.' },
-      { type: 'success', content: 'This is usual event.' },
-      { type: 'error', content: 'This is error event.' }
-    ]
+    treinta:[]
 
+}
+
+convertNumber(num){
+
+  switch(num)
+  {
+      case 1: return 'uno';
+      case 2: return 'dos';
+      case 3: return 'tres';
+      case 4: return 'cuatro';
+      case 5: return 'cinco';
+      case 6: return 'seis';
+      case 7: return 'siete';
+      case 8: return 'ocho';
+      case 9: return 'nueve';
+      case 10: return 'diez';
+      case 11: return 'once:';
+      case 12: return'doce';
+      case 13: return 'trece';
+      case 14: return 'catorce';
+      case 15: return 'quince:';
+      case 16: return 'dieciseis'
+      case 17: return 'diecisiete';
+      case 18: return 'dieciocho';
+      case 19: return 'diecinueve:';
+      case 20: return 'veinte';
+      case 11: return 'veintiuno';
+      case 22: return 'veintidos';
+      case 23: return 'veintitres';
+      case 24: return 'veinticuatro';
+      case 25: return 'veinticinco';
+      case 26: return 'veintiseis';
+      case 27: return 'veintisiete';
+      case 28: return 'veintiocho';
+      case 29: return 'veintinueve';
+      case 30: return 'treinta';
+
+  }
 }
 
 getMonthData(date: Date): number | null {
@@ -82,5 +133,35 @@ createComponentModal(): void {
   setTimeout(() => {
   }, 2000);
 }
+
+
+setCalendarForPlanPem(){
+  this.listPlansPems.forEach(plan =>{
+    let dia = this.getDayforDate(plan.fechaInicio);
+    this.warnCalendar.content = `Mantenimiento: ${plan.codigoEquipo}  : No PEM: ${plan.numeroPem}`;
+    this.listDataMap[this.convertNumber(dia)].push(this.warnCalendar);
+  })
+}
+
+setCalendarFormAuxiliar(){
+  this.listCalendarioAuxiliar.forEach(aux =>{
+    let dia = this.getDayforDate(aux.fechaProgramacionTrabajo);
+    this.warnCalendar.content = `Mantenimiento : No PEM: ${aux.codigoPem}`;
+    this.listDataMap[this.convertNumber(dia)].push(this.warnCalendar);
+  })
+}
+
+  getPlanPems(){
+    this.manttoService.findAllPlanPems().subscribe((planes: PlanPems[])=>{
+      this.listPlansPems = planes;
+      this.setCalendarForPlanPem();
+      this.manttoService.findAllCalendarioAuxiliar().subscribe((calendarioAuxiliar:CalendarioAuxiliar[])=>{
+        this.listCalendarioAuxiliar = calendarioAuxiliar;
+        this.setCalendarFormAuxiliar();
+      });
+    }, err =>{
+      console.log('Error al obtener los plan pems', err);
+    });
+  }
 
 }
